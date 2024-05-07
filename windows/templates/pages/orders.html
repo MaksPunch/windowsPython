@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h1>Заказы</h1>
+    {% if order_list %}
+        {% for order in order_list %}
+        	<div class="card">
+                <div class="flex">{{ order.date }} ({{ order.status }})</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У вас пока нет заказов</p>
+    {% endif %}
+{% endblock %}
