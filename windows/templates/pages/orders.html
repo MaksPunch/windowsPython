@@ -1,10 +1,27 @@
 {% extends 'index.html' %}
+{% load i18n %}
 {% block content %}
     <h1>Заказы</h1>
     {% if order_list %}
         {% for order in order_list %}
-        	<div class="card">
-                <div class="flex">{{ order.date }} ({{ order.status }})</div>
+            <div class="card mt-4 gap-2">
+                <p class="flex p-3 {% if order.iteminorder_set.all %}pb-0{% endif %}"><b>Заказ: №{{ order.id }}</b> от {{ order.date }} ({{ order.status_verbose }})</p>
+                {% if order.iteminorder_set.all %}
+                    <hr>
+                    <div class="d-flex flex-column gap-3">
+                        {% for item in order.iteminorder_set.all %}
+                            <div class="py-2 px-3 d-flex flex-row justify-content-between align-items-center w-100">
+                                <a href="{{item.product.get_absolute_url}}" class="fs-4">{{ item.product.name }}</a>
+                                <div class="d-flex flex-column align-items-end gap-2">
+                                    <p class="fs-5">Цена: <b>{{ item.product.price }} р</b></p>
+                                    <p class="w-full">Количество: <b>{{ item.quantity }} шт.</b> Итого: <b>{{ item.price }} р</b></p>
+                                </div>
+                            </div>
+                            <hr>
+                        {% endfor %}
+                    </div>
+                    <p class="ms-auto mb-3 pe-3">Итого: <b class="fs-5">{{ order.get_overall_price }} р</b></p>
+                {% endif %}
             </div>
         {% endfor %}
     {% else %}

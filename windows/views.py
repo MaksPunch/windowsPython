@@ -25,7 +25,7 @@ def catalog(request):
 def contact(request):
     return render(request, 'pages/contact.html')
 
-def product(request):
+def product(request, pk):
     return render(request, 'pages/product.html')
 
 class OrderListView(LoginRequiredMixin, generic.ListView):

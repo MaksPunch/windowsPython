@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -35,6 +37,10 @@ class Product(models.Model):
     quantity = models.IntegerField(verbose_name="Количество", blank=False, default=1)
     category = models.ForeignKey('Category', verbose_name='Категория', on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse('product', args=[str(self.id)])
+
+
     def __str__(self):
         return self.name
 
@@ -64,6 +70,12 @@ class Order(models.Model):
         for item_order in self.iteminorder_set.all():
             count += item_order.quantity
         return count
+
+    def get_overall_price(self):
+        price = 0
+        for item_order in self.iteminorder_set.all():
+            price += item_order.price
+        return price
 
     def __str__(self):
         return self.date.ctime() + "|" + self.user.full_name() + "|" + str(self.count_product())
