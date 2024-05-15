@@ -294,7 +294,7 @@ header {
 }
 
 .offer_container {
-    background: url("../offer_bg.jpg");
+    background: url("../offer_bg-min.jpg");
     width: 100%;
     height: 30rem;
     background-size: cover;
@@ -523,7 +523,7 @@ header {
     background: linear-gradient(270deg,
         rgb(243, 245, 249) 44.93%,
         rgba(243, 245, 249, 0) 62.37%),
-        url('../why_us_form_bg.jpg'
+        url('../why_us_form_bg-min.jpg'
     )
     center center / cover no-repeat;
 }
