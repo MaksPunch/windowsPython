@@ -187,8 +187,10 @@
             </div>
         </div>
     </div>
+    {% include 'components/faq.html' %}
 {% endblock %}
 {% block footer_scripts %}
 {#    <script src="{% staticfiles 'js/examples.js' %}"></script>#}
     <script src="{% static 'js/product_page.js' %}"></script>
+    <script src="{% static 'js/faq.js' %}"></script>
 {% endblock %}
