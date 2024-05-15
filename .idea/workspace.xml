@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b24f2963-a0ee-4968-a906-c8348adad680" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,7 @@
       <workItem from="1715597267830" duration="34450000" />
       <workItem from="1715675378002" duration="7220000" />
       <workItem from="1715703209493" duration="19149000" />
-      <workItem from="1715757199528" duration="9407000" />
+      <workItem from="1715757199528" duration="9536000" />
     </task>
     <servers />
   </component>
