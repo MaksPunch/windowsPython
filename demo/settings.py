@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-qj8o%8s4f3zo696zg-yvm&bb^oqiqk06i7qzdatkcq&i^yttxh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['192.168.0.103', '127.0.0.1', 'localhost', "windows-practice.vercel.app"]
 
@@ -119,7 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -132,4 +132,4 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'windows.User'
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_REDIRECT_URL = '/orders'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_STORAGE = "whitenoise.storage.CompressedManifestStaticStorage"
