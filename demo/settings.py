@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'windows.apps.WindowsConfig',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'staticfiles/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+if DEBUG:
+    STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'staticfiles')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -141,4 +145,4 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'windows.User'
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_REDIRECT_URL = '/orders'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
