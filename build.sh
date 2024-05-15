@@ -10,6 +10,6 @@ python -m pip install --upgrade pip
 echo "Building the project..."
 python -m pip install -r requirements.txt
 
-# Collect static files
+# Collect staticfiles files
 echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear
