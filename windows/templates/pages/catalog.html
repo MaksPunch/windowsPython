@@ -1,4 +1,41 @@
 {% extends 'index.html' %}
+{% block page_header %}
+<div class="catalog_bg">
+</div>
+{% endblock %}
 {% block content %}
-    <h1>Каталог</h1>
+    <div class="main_wrapper mb-3">
+        <div class="text-white catalog_header">
+            <h1>Пластиковые окна</h1>
+            <p class="catalog_description">
+                Пластиковые окна — это окна из ПВХ-профиля с отделкой или без нее. Они бывают как простыми, то есть без
+                каких-либо особых
+                свойств, так и специальными. Например, существуют противовзломные, энергосберегающие, шумозащитные,
+                звукоизоляционные окна. <br> <br>
+                Для того, чтобы заказать окно по индивидуальным размерам или в какой-то специфической комплектации,
+                обратитесь
+                к одному из наших консультантов. Он поможет правильно подобрать все опции и сделает точный расчёт
+                стоимости заказа.
+            </p>
+        </div>
+        <div class="d-flex justify-content-between gap-3 flex-wrap">
+            {% for item in products %}
+                <div class="d-flex bg-white catalog_item card flex-row gap-3 p-0">
+                    <img src="{{ item.photo_file.url }}" alt="{{ item.name }}" class="catalog_img my-3 ms-3"
+                         width="200">
+                    <div class="catalog_item_info w-100">
+                        <div class="p-3">
+                            <h3>
+                                {{ item.name }}
+                            </h3>
+                            <p class="catalog_item_description">
+                                {{ item.name }} - {{ item.description }}
+                            </p>
+                        </div>
+                        <a href="{{ item.get_absolute_url }}" class="catalog_item_button">Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

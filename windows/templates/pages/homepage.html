@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block page_header %}
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="offer_container">
+        <div class="offer_wrapper">
+            <h1>Пластиковые окна PLIDOWS — долговечно и надежно!</h1>
+            <button class="order_measure">Заказать замер</button>
+        </div>
+    </div>
+    <div class="main_wrapper">
+        <h2>Продукция PLIDOWS</h2>
+        <div class="products_container mb-5">
+            <img src="{% static 'production_bg.jpg' %}" alt="Продукция PLIDOWS" class="products_top">
+            <div class="products_wrapper d-flex flex-column gap-4">
+                <span class="production_heading">Пластиковые окна</span>
+                <div class="d-flex justify-content-between gap-3 flex-wrap">
+                    {% for item in products_for_production %}
+                        <div class="d-flex flex-column bg-white catalog_item catalog_item_homepage align-items-center card p-0">
+                            <div class="homepage_product_img">
+                                <img src="{{ item.photo_file.url }}" alt="{{ item.name }}"
+                                    class="catalog_img mt-2 w-100">
+                            </div>
+                            <div class="catalog_item_info justify-content-start w-100">
+                                <div class="py-1 px-3">
+                                    <h3>
+                                        {{ item.name }}
+                                    </h3>
+                                </div>
+                                <a href="{{ item.get_absolute_url }}" class="catalog_item_button">Подробнее</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'catalog' %}" class="production_more_button">Показать больше</a>
+            </div>
+        </div>
+    </div>
+    {% include 'components/why_us.html' %}
+    <div class="d-flex my-4 align-items-center gap-5 main_wrapper examples_slider_heading">
+        <h2>Воплощаем мечты о комфортной <br> жизни</h2>
+        <p>В нашем портфолио более 1000 <br> реализованных проектов.</p>
+    </div>
+    {% include 'components/examples_slider.html' %}
+    {% include 'components/reviews.html' %}
+    {% include 'components/faq.html' %}
+{% endblock %}
+{% block footer_scripts %}
+    <script src="{% static 'js/why_us_script.js' %}"></script>
+    <script src="{% static 'js/examples.js' %}"></script>
+    <script src="{% static 'js/reviews.js' %}"></script>
+    <script src="{% static 'js/faq.js' %}"></script>
+{% endblock %}

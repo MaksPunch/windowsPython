@@ -1,4 +1,121 @@
 {% extends 'index.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+{% endblock %}
 {% block content %}
-    <h1>О нас</h1>
+    <div class="about_us_intro">
+        <div class="about_us_intro_bg"></div>
+        <div class="about_us_text main_wrapper">
+            <h1>О компании</h1>
+            <p>
+                PLIDOWS Rus является дочерней производственной компанией концерна PLIDOWS AG — одного из мировых лидеров в
+                области разработки и производства оконных систем из высококачественного пластика
+            </p>
+        </div>
+    </div>
+    <div class="main_wrapper mb-5 mt-5">
+        <h2>Концерн PLIDOWS</h2>
+        <div class="d-flex gap-3 justify-content-between about_concern_text">
+            <p>
+                Компания PLIDOWS Rus является дочерней производственной компанией концерна PLIDOWS AG — одного из мировых лидеров в области
+                разработки и производства оконных и дверных систем из высококачественного пластика, а также откидных и рольставен.
+                Компания PLIDOWS AG работает на рынке с 1969 года. Головное предприятие находится в г. Зенденхорст (Sendenhorst), ФРГ,
+                Северный Рейн-Вестфалия.
+                <br>Производственные дочерние компании концерна, помимо Германии, работают в США, Канаде, Бельгии, Великобритании,
+                Польше, Китае, Испании, Франции. В мире действует развитая сеть коммерческих представительств PLIDOWS, осуществляющих
+                свою деятельность в странах Латинской Америки, Индии, Сингапуре, Румынии.
+            </p>
+            <p>
+                На сегодняшний день PLIDOWS является одним из крупнейших в мире производителей пластикового профиля для
+                изготовления оконных и дверных конструкций. Все производства группы компаний PLIDOWS ведут свою деятельность под
+                постоянным контролем главного предприятия в городе Зенденхорст, определяющего единый для всех предприятий стандарт
+                качества независимо от страны производства.
+            </p>
+        </div>
+    </div>
+    <div class="about_us_guarantee why_us_container d-flex flex-column gap-4">
+        <div class="d-flex gap-4 justify-content-center why_us_wrapper">
+            <div class="why_us_text d-flex flex-column gap-3">
+                <span class="why_us_heading">
+                    Гарантия качества
+                </span>
+                <p>
+                    Вся продукция PLIDOWS Rus имеет необходимые сертификаты и может использоваться во всех климатических зонах,
+                    включая регионы Крайнего Севера и районы с резко континентальным климатом, повышенной влажностью и
+                    сверхнормативными ветровыми нагрузками. 25 марта 2004 года PLIDOWS стала первой западной экструзионной
+                    компанией в России, получившей сертификат соответствия стандарту качества DIN ISO 9001:2000.
+                </p>
+                <div class="d-flex justify-content-between guarantee_documents">
+                    <div class="d-flex gap-3 align-items-start flex-wrap">
+                        <img src="{% static 'sppp.png' %}" alt="СППП">
+                        <p>Член Союза производителей <br> полимерных профилей</p>
+                    </div>
+                    <div class="d-flex gap-3 align-items-start flex-wrap">
+                        <img src="{% static 'iso_9000.webp' %}" alt="ISO 9001:2000">
+                        <p>Стандарт качества DIN ISO <br> 9001:2000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="why_us_certificates_slider_container">
+                <div class="why_us_certificates_slider overflow-hidden d-flex flex-column gap-4">
+                    <div class="d-flex justify-content-between why_us_slider_heading_container">
+                        <span class="why_us_slider_heading">Сертификаты</span>
+                        <div class="d-flex gap-4 align-items-center">
+                            <div class="why_us_certificates_slider_button_prev">
+                                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                                </svg>
+                                <span class="visually-hidden">Предыдущий слайд</span>
+                            </div>
+                            <div class="why_us_certificates_slider_button_next">
+                                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                </svg>
+                                <span class="visually-hidden">Следующий слайд</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                               class="d-flex flex-column gap-2 why_us_slider_link">
+                                <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                     alt="dqs сертификат английский">
+                                <span>Сертификат ISO 9001:2015 PLIDOWS Rus Вологда</span>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                               class="d-flex flex-column gap-2 why_us_slider_link">
+                                <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                     alt="dqs сертификат английский">
+                                <span>Сертификат ISO 9001:2015 PLIDOWS</span>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                               class="d-flex flex-column gap-2 why_us_slider_link">
+                                <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                     alt="dqs сертификат английский">
+                                <span>Сертификат ISO 9001:2015 PLIDOWS Rus Вологда</span>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                               class="d-flex flex-column gap-2 why_us_slider_link">
+                                <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                     alt="dqs сертификат английский">
+                                <span>Сертификат ISO 9001:2015 PLIDOWS</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer_scripts %}
+    <script src="{% static 'js/why_us_script.js' %}"></script>
 {% endblock %}

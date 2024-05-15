@@ -1,4 +1,194 @@
 {% extends 'index.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+{% endblock %}
 {% block content %}
-    <h1>Товар</h1>
+    <div class="product_page_intro main_wrapper align-items-center">
+        <div class="d-flex flex-column gap-2">
+            <h1>{{ product.name }}</h1>
+            <p class="product_description">{{ product.name }} - {{ product.description }}</p>
+            <button class="product_measure order_measure">
+                Бесплатный замер
+            </button>
+        </div>
+        <div class="product_image">
+            <img src="{% static 'window.png' %}" alt="{{ product.name }}">
+        </div>
+    </div>
+    <div class="main_wrapper characteristics_wrapper mt-3">
+        <h2>Характеристики</h2>
+        <div class="characteristics_container">
+            <div class="characteristic">
+                <span class="characteristic_title">Профиль:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.profile }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Цвета уплотнений:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.colors }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Количество камер:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.cameras }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Монтажная ширина (мм):</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.montage }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Высота фальца:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.rebate }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Исполнения:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.fulfillment }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Материал уплотнений:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.material }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Тип стеклопакета:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.glass_unit }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Сопротивление теплопередаче (с установленным армированием), м²С/Вт:</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.resistance }}</span>
+            </div>
+            <div class="characteristic">
+                <span class="characteristic_title">Высота комбинации рама-створка в световом проеме (типовой вариант):</span>
+                <span class="characteristic_line"></span>
+                <span class="characteristic_value">{{ product.height }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="main_wrapper advantage_container">
+        <h2>Преимущества</h2>
+        <div class="d-flex justify-content-between align-items-start gap-5 advantage_wrapper">
+            <img src="{% static 'window_advantage.webp' %}" alt="Преимущества" class="product_advantage_image">
+            <div class="product_advantages_slider w-100">
+                <div class="swiper-wrapper">
+                    {% for advantage in product.advantage_set.all %}
+                        <div class="swiper-slide d-flex flex-column gap-2">
+                            <span class="advantage_heading">{{ advantage.name }}</span>
+                            <p class="advantage_description">{{ advantage.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="d-flex gap-4 align-items-center w-auto product_advantages_slider_controls">
+                    <div class="product-advantages-button-prev product_advantages_arrow_button">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                        </svg>
+                        <span class="visually-hidden">Предыдущий слайд</span>
+                    </div>
+                    <div class="product-advantages-pagination-fraction w-auto"></div>
+                    <div class="product-advantages-button-next product_advantages_arrow_button">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>
+                        <span class="visually-hidden">Следующий слайд</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main_wrapper">
+        <div class="d-flex justify-content-between gap-5 product_photos_slider_wrapper my-4">
+            <div class="d-flex flex-column align-items-start gap-5 product_photos_slider_header">
+                <h2>Фото галерея</h2>
+                <div class="d-flex gap-4 align-items-center w-auto product_photos_slider_controls_one">
+                    <div class="product-photos-button-prev product_advantages_arrow_button">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/>
+                        </svg>
+                        <span class="visually-hidden">Предыдущий слайд</span>
+                    </div>
+                    <div class="product-photos-pagination-fraction w-auto"></div>
+                    <div class="product-photos-button-next product_advantages_arrow_button">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/>
+                        </svg>
+                        <span class="visually-hidden">Следующий слайд</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product_photos_slider d-flex flex-column align-items-center gap-3">
+                <div class="swiper-wrapper">
+                    {% for photo in product.productphoto_set.all %}
+                        <div class="swiper-slide d-flex flex-column gap-2">
+                            <img src="{{ photo.photo.url }}" alt="Фото продукта {{ forloop.counter }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{#    <h2 class="mt-5 mb-5 main_wrapper">Фото галерея</h2>#}
+{#    {% include "components/examples_slider.html" %}#}
+    <div class="main_wrapper mb-5">
+        <div class="d-flex justify-content-between align-items-center gap-2 mt-4 mb-4 other_products_header">
+            <h2>Другие типовые решения PLIDOWS</h2>
+            <div class="d-flex gap-4 align-items-center w-auto other_products_slider_controls">
+                <div class="other-products-button-prev other_products_arrow_button">
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                    </svg>
+                    <span class="visually-hidden">Предыдущий слайд</span>
+                </div>
+                <div class="other-products-pagination-fraction w-auto"></div>
+                <div class="other-products-button-next other_products_arrow_button">
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                    </svg>
+                    <span class="visually-hidden">Следующий слайд</span>
+                </div>
+            </div>
+        </div>
+        <div class="other_products_slider">
+            <div class="swiper-wrapper">
+                {% for item in products %}
+                    {% if item.id == product.id %}
+                    {% else %}
+                        <div class="swiper-slide">
+                            <div class="d-flex bg-white catalog_item card flex-row gap-3 p-0">
+                                <img src="{{ item.photo_file.url }}" alt="{{ item.name }}" class="catalog_img my-3 ms-3"
+                                     width="200">
+                                <div class="catalog_item_info w-100">
+                                    <div class="p-3">
+                                        <h3>
+                                            {{ item.name }}
+                                        </h3>
+                                        <p class="catalog_item_description">
+                                            {{ item.name }} - {{ item.description }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ item.get_absolute_url }}" class="catalog_item_button">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer_scripts %}
+{#    <script src="{% static 'js/examples.js' %}"></script>#}
+    <script src="{% static 'js/product_page.js' %}"></script>
 {% endblock %}

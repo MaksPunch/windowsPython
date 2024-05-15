@@ -1,0 +1,139 @@
+{% load static %}
+<div class="why_us_container d-flex flex-column gap-4">
+    <div class="d-flex gap-4 justify-content-center why_us_wrapper">
+        <div class="why_us_text d-flex flex-column gap-3">
+            <span class="why_us_heading">
+                Почему покупатели выбирают профиль PLIDOWS?
+            </span>
+            <p>
+                Компания PLIDOWS — мировой лидер в области разработки и производства оконных и дверных систем из
+                высококачественного пластика.
+                В нашей продукции мы стремимся соединить качество и соответствие немецким стандартам с комфортом для
+                клиентов и экологичностью.
+            </p>
+        </div>
+        <div class="why_us_certificates_slider_container">
+            <div class="why_us_certificates_slider overflow-hidden d-flex flex-column gap-4">
+                <div class="d-flex justify-content-between why_us_slider_heading_container">
+                    <span class="why_us_slider_heading">Сертификаты</span>
+                    <div class="d-flex gap-4 align-items-center">
+                        <div class="why_us_certificates_slider_button_prev">
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                            </svg>
+                            <span class="visually-hidden">Предыдущий слайд</span>
+                        </div>
+                        <div class="why_us_certificates_slider_button_next">
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                            </svg>
+                            <span class="visually-hidden">Следующий слайд</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                           class="d-flex flex-column gap-2 why_us_slider_link">
+                            <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                 alt="dqs сертификат английский">
+                            <span>Сертификат ISO 9001:2015 PLIDOWS Rus Вологда</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                           class="d-flex flex-column gap-2 why_us_slider_link">
+                            <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                 alt="dqs сертификат английский">
+                            <span>Сертификат ISO 9001:2015 PLIDOWS</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                           class="d-flex flex-column gap-2 why_us_slider_link">
+                            <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                 alt="dqs сертификат английский">
+                            <span>Сертификат ISO 9001:2015 PLIDOWS Rus Вологда</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="{% static "certificates/DQS_Certificate_eng.pdf" %}"
+                           class="d-flex flex-column gap-2 why_us_slider_link">
+                            <img src="{% static 'certificates/DQS_Certificate_eng.png' %}"
+                                 alt="dqs сертификат английский">
+                            <span>Сертификат ISO 9001:2015 PLIDOWS</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="why_us_points">
+        <ul class="d-flex justify-content-between align-items-start ps-0 flex-wrap">
+            <li>
+                <span class="why_us_point_heading">
+                    Немецкое качество
+                </span>
+                <p>
+                    и стандарты производства
+                </p>
+            </li>
+            <li>
+                <span class="why_us_point_heading">
+                    Надежно
+                </span>
+                <p>
+                    срок службы профиля 50 лет
+                </p>
+            </li>
+            <li>
+                <span class="why_us_point_heading">
+                    >50 лет опыта
+                </span>
+                <p>
+                    лучших европейских инженеров
+                </p>
+            </li>
+            <li>
+                <span class="why_us_point_heading">
+                    >25 производств
+                </span>
+                <p>
+                    по всему миру
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="why_us_form">
+    <div class="d-flex justify-content-between gap-3 why_us_form_container main_wrapper">
+        <div class="d-flex flex-column gap-3 w-50 why_us_form_text_container">
+            <span class="why_us_form_heading">
+                Поможем с выбором
+            </span>
+            <p class="why_us_form_text">Заполните форму и наши эксперты <br> бесплатно помогут вам подобрать <br> подходящее окно под ваши параметры.</p>
+        </div>
+        <form method="POST" class="flex-column gap-3 w-50 why_us_form_wrapper order_form">
+            {% csrf_token %}
+            <input type="text" placeholder="Город" name="city" class="why_us_form_input" required>
+            <input type="text" placeholder="Ваше имя" name="name" class="why_us_form_input" required>
+            <input type="text" placeholder="Телефон" name="phone" class="why_us_form_input" required>
+            <div class="d-flex gap-2 why_us_form_rules align-items-center">
+                <input type="checkbox" id="rules" name="rules" class="form-check-input mt-0" required>
+                <label for="rules">Cогласен с <a href="policy">Политикой конфиденциальности</a> и <a href="conditions">Условиями сайта</a></label>
+            </div>
+            <input type="hidden" name="type" value="pick">
+            <button class="why_us_form_submit">Оставить заявку на подбор</button>
+        </form>
+        <div class="response_container w-50">
+            <div class="success_response flex-column gap-3 align-items-center justify-content-center">
+                <img src="{% static 'success.png' %}" alt="Успешно">
+                <span>Заявка успешно отправлена!</span>
+            </div>
+            <div class="error_response flex-column gap-3 align-items-center justify-content-center">
+                <img src="{% static 'error.png' %}" alt="Произошла ошибка">
+                <span>Произошла ошибка при отправке заявки</span>
+            </div>
+        </div>
+    </div>
+</div>

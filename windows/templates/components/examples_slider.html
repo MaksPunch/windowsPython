@@ -1,0 +1,43 @@
+<div class="examples_slider overflow-hidden position-relative">
+    {% with ""|center:10 as range %}
+        <div class="swiper-wrapper position-absolute">
+            {% for _ in range %}
+                <div class="swiper-slide">
+                    <img src="../../static/work_examples/example_{{ forloop.counter }}.jpg" alt="Работа {{ forloop.counter }}">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="d-flex h-100 align-items-end examples_slider_info gap-5">
+            <div class="d-flex gap-3 flex-column examples_slider_text_controls">
+                <div class="d-flex flex-column gap-1">
+                    <span class="examples_info_title" id="examples_info_title">Партнер ОКНА ВЕКА</span>
+                    <span class="examples_info_city" id="examples_info_city">Санкт-Петербург</span>
+                </div>
+                <div class="d-flex gap-4 align-items-center w-auto examples_slider_controls">
+                    <div class="examples-button-prev examples_arrow_button">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+                        </svg>
+                        <span class="visually-hidden">Предыдущий слайд</span>
+                    </div>
+                    <div class="examples-pagination-fraction w-auto"></div>
+                    <div class="examples-button-next examples_arrow_button">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>
+                        <span class="visually-hidden">Следующий слайд</span>
+                    </div>
+                </div>
+            </div>
+            <div class="examples_slider_thumbnails">
+                <div class="swiper-wrapper">
+                    {% for _ in range %}
+                        <div class="swiper-slide">
+                            <img src="../../static/work_examples/example_{{ forloop.counter }}.jpg" alt="Работа {{ forloop.counter }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endwith %}
+</div>

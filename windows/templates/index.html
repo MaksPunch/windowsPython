@@ -3,56 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Производство пластиковых окон{% endblock %}</title>
     {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    {% block head %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top px-3 gap-2">
-        <a href="/" class="navbar-brand">Главная</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
-            <span class="navbar-toggler-icon"></span>
+<div class="order_modal order_call_modal">
+    <div class="order_modal_content">
+        <div class="order_modal_header">
+            <h2>Заказать звонок</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="xmark">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <form action="/" method="POST" class="flex-column gap-3 w-100 order_modal_form order_form">
+            {% csrf_token %}
+            <input type="text" placeholder="Город" name="city" class="order_modal_input" required>
+            <input type="text" placeholder="Ваше имя" name="name" class="order_modal_input" required>
+            <input type="text" placeholder="Телефон" name="phone" class="order_modal_input" required>
+            <textarea placeholder="Ваши пожелания" name="wishes" class="order_modal_input order_modal_wishes"></textarea>
+            <div class="d-flex gap-2 order_modal_rules align-items-center">
+                <input type="checkbox" id="rules_order_call" name="rules" class="form-check-input mt-0" required>
+                <label for="rules_order_call">Cогласен с <a href="policy">Политикой конфиденциальности</a> и <a href="conditions">Условиями сайта</a></label>
+            </div>
+            <input type="hidden" name="type" value="call">
+            <button class="order_modal_submit">Оставить заявку на подбор</button>
+        </form>
+        <div class="response_container w-100">
+            <div class="success_response flex-column gap-3 align-items-center justify-content-center">
+                <img src="{% static 'success.png' %}" alt="Успешно">
+                <span>Заявка успешно отправлена!</span>
+            </div>
+            <div class="error_response flex-column gap-3 align-items-center justify-content-center">
+                <img src="{% static 'error.png' %}" alt="Произошла ошибка">
+                <span>Произошла ошибка при отправке заявки</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="order_modal order_measure_modal">
+    <div class="order_modal_content">
+        <div class="order_modal_header">
+            <h2>Заказать замер</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="xmark">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </div>
+        <form action="/" method="POST" class="flex-column gap-3 w-100 order_modal_form order_form">
+            {% csrf_token %}
+            <input type="text" placeholder="Город" name="city" class="order_modal_input" required>
+            <input type="text" placeholder="Ваше имя" name="name" class="order_modal_input" required>
+            <input type="text" placeholder="Телефон" name="phone" class="order_modal_input" required>
+            <textarea placeholder="Ваши пожелания" name="wishes" class="order_modal_input order_modal_wishes"></textarea>
+            <div class="d-flex gap-2 order_modal_rules align-items-center">
+                <input type="checkbox" id="rules_order_measure" name="rules" class="form-check-input mt-0" required>
+                <label for="rules_order_measure">Cогласен с <a href="policy">Политикой конфиденциальности</a> и <a href="conditions">Условиями сайта</a></label>
+            </div>
+            <input type="hidden" name="type" value="measure">
+            <button class="order_modal_submit">Оставить заявку на подбор</button>
+        </form>
+        <div class="response_container w-100">
+            <div class="success_response flex-column gap-3 align-items-center justify-content-center">
+                <img src="{% static 'success.png' %}" alt="Успешно">
+                <span>Заявка успешно отправлена!</span>
+            </div>
+            <div class="error_response flex-column gap-3 align-items-center justify-content-center">
+                <img src="{% static 'error.png' %}" alt="Произошла ошибка">
+                <span>Произошла ошибка при отправке заявки</span>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="d-flex flex-column">
+    <div class="d-flex justify-content-between align-items-center header-top py-1">
+        <a href="/" class="navbar-brand">
+            <img class="nav-logo logo" src="{% static 'logo.png' %}" alt="logo">
+        </a>
+        <div class="d-flex align-items-center gap-3 header_contacts">
+            <div class="d-flex flex-column align-items-center">
+                <a href="tel:89999999999">8 (999) 999-99-99</a>
+                <p class="text-black-50">Круглосуточно, бесплатно</p>
+            </div>
+            <div class="order_measure_line"></div>
+            <button class="btn order_measure order_measure_header">Заказать замер</button>
+        </div>
+        <button class="order_call">
+            <p class="order_call_icon"></p>
+            <p>Заказать звонок</p>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="navbar-item">
-                    <a href="{% url 'catalog' %}" class="nav-link">Услуги</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="{% url 'about' %}" class="nav-link">О нас</a>
-                </li>
-                <li class="navbar-item">
-                    <a href="{% url 'contact' %}" class="nav-link">Контакты</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                {% if user.is_authenticated %}
-                    <li class="navbar-item">
-                        <a href="{% url 'orders' %}" class="nav-link">Заказы</a>
-                    </li>
-                    <form method="post" class="navbar-item" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <input type="submit" href="{% url 'logout' %}" class="nav-link" value="Выйти {{ user.username }}"></input>
-                    </form>
-                {% else %}
-                    <li class="navbar-item">
-                        <a href="{% url 'login' %}" class="nav-link">Вход</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="{% url 'register' %}" class="nav-link">Регистрация</a>
-                    </li>
-                {% endif %}
-            </ul>
+    </div>
+    <nav class="navbar navbar-expand-md py-1 mx-auto">
+        <div class="d-flex header_navbar py-2 gap-3">
+            <a href="{% url 'catalog' %}">Пластиковые окна</a>
+            <a href="{% url 'about' %}">О нас</a>
+            <a href="{% url 'contact' %}">Контакты</a>
         </div>
     </nav>
-    <main role="main" class="container mt-5 pt-5">
-        <div class="starter-template">
-            {% block content %}{% endblock %}
+</header>
+{% block page_header %}{% endblock %}
+<main role="main">
+    <div class="starter-template">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+<footer>
+    <div class="have_questions_form">
+        <div class="d-flex justify-content-between gap-3 why_us_form_container main_wrapper">
+            <div class="d-flex flex-column gap-3 w-50 why_us_form_text_container">
+                <span class="why_us_form_heading">
+                    Остались вопросы?
+                </span>
+                <p class="have_questions_form_text">Получите бесплатную консультацию</p>
+                <p class="why_us_form_text">Позвоните в Контакт-центр PLIDOWS или оставьте заявку на обратный звонок</p>
+                <div class="d-flex flex-column">
+                    <span class="why_us_form_heading">
+                        8 (999) 999-99-99
+                    </span>
+                    <span class="small_text">Круглосуточно, бесплатно</span>
+                </div>
+            </div>
+            <form action="/" method="POST" class="flex-column gap-3 w-50 why_us_form_wrapper order_form">
+                {% csrf_token %}
+                <input type="text" placeholder="Город" name="city" class="why_us_form_input" required>
+                <input type="text" placeholder="Ваше имя" name="name" class="why_us_form_input" required>
+                <input type="text" placeholder="Телефон" name="phone" class="why_us_form_input" required>
+                <div class="d-flex gap-2 why_us_form_rules align-items-center">
+                    <input type="checkbox" id="rules_have_question" name="rules" class="form-check-input mt-0" required>
+                    <label for="rules_have_question">Cогласен с <a href="policy">Политикой конфиденциальности</a> и <a href="conditions">Условиями сайта</a></label>
+                </div>
+                <input type="hidden" name="type" value="consultation">
+                <button class="why_us_form_submit">Получить консультацию</button>
+            </form>
+            <div class="response_container w-50">
+                <div class="success_response flex-column gap-3 align-items-center justify-content-center">
+                    <img src="{% static 'success.png' %}" alt="Успешно">
+                    <span>Заявка успешно отправлена!</span>
+                </div>
+                <div class="error_response flex-column gap-3 align-items-center justify-content-center">
+                    <img src="{% static 'error.png' %}" alt="Произошла ошибка">
+                    <span>Произошла ошибка при отправке заявки</span>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
+    <div class="d-flex footer_socials justify-content-between align-items-center">
+        <h1>PLIDOWS - ведущий мировой производитель пластиковых окон</h1>
+        <div class="d-flex gap-4 footer_socials_icons">
+            <a href="https://vk.com" target="_blank" class="text-white">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.0718 19C4.87188 19 0.194878 13.3694 0 4H4.10743C4.24235 10.8769 7.27038 13.7898 9.66888 14.3904V4H13.5366V9.93093C15.9051 9.67568 18.3933 6.97297 19.2328 4H23.1004C22.4558 7.66366 19.7575 10.3664 17.8387 11.4775C19.7575 12.3784 22.8307 14.7357 24 19H19.7425C18.8281 16.1471 16.5497 13.9399 13.5366 13.6396V19H13.0718Z"
+                          fill="currentColor"></path>
+                </svg>
+            </a>
+            <a href="https://web.telegram.org" target="_blank" class="text-white">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.4714 10.71C1.4714 10.71 12.086 6.31967 15.7673 4.77372C17.1786 4.15538 21.9643 2.17655 21.9643 2.17655C21.9643 2.17655 24.1732 1.31088 23.9891 3.4133C23.9277 4.27905 23.4369 7.30901 22.9461 10.5864C22.2098 15.2242 21.4121 20.2948 21.4121 20.2948C21.4121 20.2948 21.2894 21.717 20.2464 21.9644C19.2033 22.2117 17.4853 21.0987 17.1786 20.8513C16.9331 20.6658 12.5768 17.8831 10.9816 16.5227C10.5521 16.1517 10.0613 15.4097 11.0429 14.544C13.2518 12.5033 15.8901 9.96805 17.4853 8.3603C18.2216 7.61822 18.9579 5.8868 15.8901 7.98921C11.5338 11.0193 7.23888 13.8638 7.23888 13.8638C7.23888 13.8638 6.25715 14.4821 4.41649 13.9255C2.57575 13.3691 0.428278 12.627 0.428278 12.627C0.428278 12.627 -1.04418 11.6995 1.4714 10.71Z"
+                          fill="currentColor"></path>
+                </svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="text-white">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.98 5.34C22.329 4.182 21.6225 3.969 20.184 3.888C18.747 3.7905 15.1335 3.75 12.003 3.75C8.8665 3.75 5.2515 3.7905 3.816 3.8865C2.3805 3.969 1.6725 4.1805 1.0155 5.34C0.345 6.4965 0 8.4885 0 11.9955C0 11.9985 0 12 0 12C0 12.003 0 12.0045 0 12.0045V12.0075C0 15.4995 0.345 17.5065 1.0155 18.651C1.6725 19.809 2.379 20.019 3.8145 20.1165C5.2515 20.2005 8.8665 20.25 12.003 20.25C15.1335 20.25 18.747 20.2005 20.1855 20.118C21.624 20.0205 22.3305 19.8105 22.9815 18.6525C23.658 17.508 24 15.501 24 12.009C24 12.009 24 12.0045 24 12.0015C24 12.0015 24 11.9985 24 11.997C24 8.4885 23.658 6.4965 22.98 5.34ZM9 16.5V7.5L16.5 12L9 16.5Z"
+                          fill="currentColor"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="d-flex gap-3 footer_nav justify-content-between">
+        <div class="d-flex flex-column gap-2">
+            <a href="{% url 'catalog' %}" class="footer_nav_link">Пластиковые окна</a>
+            <div class="d-flex flex-column gap-1">
+                {% for item in products %}
+                    <a href="{{ item.get_absolute_url }}" class="footer_nav_sub_link">
+                        {{ item.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{% url 'about' %}" class="footer_nav_link">О нас</a>
+        <a href="{% url 'contact' %}" class="footer_nav_link">Контакты</a>
+        <div class="d-flex flex-column align-items-start footer_order_call gap-2">
+            <button class="order_call">
+                <p class="order_call_icon"></p>
+                <p>Заказать звонок</p>
+            </button>
+            <p class="text-black-50 small_text">160000, г. Вологда, ул. Гагарина, д. 35</p>
+        </div>
+    </div>
+    <div class="d-flex footer_copyright_block justify-content-center">
+        <p class="small_text text-black-50">
+            © 2024 PLIDOWS
+        </p>
+    </div>
+</footer>
+{% block footer_scripts %}{% endblock %}
+<script src="{% static 'js/modal.js' %}"></script>
+<script src="{% static 'js/form.js' %}"></script>
 </body>
 </html>
