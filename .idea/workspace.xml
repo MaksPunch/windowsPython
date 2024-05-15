@@ -5,25 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b24f2963-a0ee-4968-a906-c8348adad680" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/windows/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/windows/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/templates/pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/windows/templates/pages/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/templates/pages/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/windows/templates/pages/catalog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/templates/pages/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/windows/templates/pages/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/templates/pages/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/windows/templates/pages/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +127,7 @@
       <workItem from="1715597267830" duration="34450000" />
       <workItem from="1715675378002" duration="7220000" />
       <workItem from="1715703209493" duration="19149000" />
-      <workItem from="1715757199528" duration="5630000" />
+      <workItem from="1715757199528" duration="6170000" />
     </task>
     <servers />
   </component>
