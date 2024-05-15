@@ -92,7 +92,7 @@ class Order(models.Model):
     type = models.CharField(verbose_name="Тип заказа", max_length=255, choices=type_choices, blank=False, default="call")
     city = models.CharField(verbose_name="Город клиента", blank=False, max_length=255, default="")
     name = models.CharField(verbose_name="Имя клиента", blank=False, max_length=255, default="")
-    phone = models.CharField(verbose_name="Телефон клиента", blank=False, max_length=11, default="")
+    phone = models.CharField(verbose_name="Телефон клиента", blank=False, max_length=12, default="")
     wishes = models.TextField(verbose_name="Пожелания", blank=True, default="")
     status = models.CharField(max_length=255, verbose_name='Статус', choices=STATUS_CHOICES, default='new')
 
